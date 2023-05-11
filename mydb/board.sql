@@ -1,76 +1,79 @@
--- board Å×ÀÌºí
+-- board ï¿½ï¿½ï¿½Ìºï¿½
 CREATE TABLE board(
-    bno NUMBER(5) PRIMARY KEY,           --±Û¹øÈ£
-    title VARCHAR2(200) NOT NULL,        --±ÛÁ¦¸ñ
-    writer VARCHAR2(20) NOT NULL,        --ÀÛ¼ºÀÚ
-    content varchar2(2000) NOT NULL,     --±Û³»¿ë
-    regdate DATE DEFAULT SYSDATE         --µî·ÏÀÏ
+    bno NUMBER(5) PRIMARY KEY,           --ï¿½Û¹ï¿½È£
+    title VARCHAR2(200) NOT NULL,        --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    writer VARCHAR2(20) NOT NULL,        --ï¿½Û¼ï¿½ï¿½ï¿½
+    content varchar2(2000) NOT NULL,     --ï¿½Û³ï¿½ï¿½ï¿½
+    regdate DATE DEFAULT SYSDATE         --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 );
--- ½ÃÄö½º(ÀÏ·Ã¹øÈ£, ÀÚµ¿¼ø¹ø)
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ï·Ã¹ï¿½È£, ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½)
 CREATE SEQUENCE seq;
 
--- ÃßÃµ¼ö Ä®·³À» Ãß°¡ÇÏ½Ã¿À(Ä®·³¸í : cnt, ÀÚ·áÇü : NUMBER)
--- ALTER TABLE Å×ÀÌºíÀÌ¸§ ADD Ä®·³¸í ÀÚ·áÇü
+-- ï¿½ï¿½Ãµï¿½ï¿½ Ä®ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï½Ã¿ï¿½(Ä®ï¿½ï¿½ï¿½ï¿½ : cnt, ï¿½Ú·ï¿½ï¿½ï¿½ : NUMBER)
+-- ALTER TABLE ï¿½ï¿½ï¿½Ìºï¿½ï¿½Ì¸ï¿½ ADD Ä®ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½ï¿½ï¿½
 ALTER TABLE board ADD cnt NUMBER DEFAULt 0;
 
 DESC board;
 
--- °Ô½Ã±Û Ãß°¡
+-- ï¿½Ô½Ã±ï¿½ ï¿½ß°ï¿½
 INSERT INTO board(bno, title, writer, content)
-VALUES(seq.NEXTVAL, '°¡ÀÔÀÎ»ç', '°­³²¿ª', '¾È³çÇÏ¼¼¿ä, °¡ÀÔÀÎ»ç µå·Á¿ä');
+VALUES(seq.NEXTVAL, 'ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');
 INSERT INTO board(bno, title, writer, content)
-VALUES(seq.NEXTVAL, '°øÁö»çÇ×ÀÔ´Ï´Ù.', '°ü¸®ÀÚ', '°¡ÀÔÀÎ»ç¸¦ ³²°ÜÁÖ¼¼¿ä');
+VALUES(seq.NEXTVAL, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½Î»ç¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½');
 INSERT INTO board(bno, title, writer, content)
-VALUES(seq.NEXTVAL, '°¡ÀÔÀÎ»çÀÔ´Ï´Ù.', 'ÀÌ°­', '¾È³çÇÏ¼¼¿ä');
+VALUES(seq.NEXTVAL, 'ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Ô´Ï´ï¿½.', 'ï¿½Ì°ï¿½', 'ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½');
 INSERT INTO board(bno, title, writer, content)
-VALUES(seq.NEXTVAL, 'ÁÁÀº ÇÏ·ç', '±äÇÏ·ç', 'ÁÁÀº ÇÏ·ç µÇ¼¼¿ä');
+VALUES(seq.NEXTVAL, 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½', 'ï¿½ï¿½ï¿½Ï·ï¿½', 'ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½Ç¼ï¿½ï¿½ï¿½');
 
 
 
--- °Ô½Ã±Û °Ë»ö
+-- ï¿½Ô½Ã±ï¿½ ï¿½Ë»ï¿½
 SELECT * FROM board
 ORDER BY regdate DESC;
 
--- ÀÛ¼ºÀÚ°¡ °ü¸®ÀÚÀÎ °Ô½Ã±ÛÀ» °Ë»öÇÏ½Ã¿À
+-- ï¿½Û¼ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï½Ã¿ï¿½
 SELECT * FROM board
 WHERE bno =2;
 
--- °Ô½Ã±ÛÀÇ ÀÛ¼ºÀÚ¸¦ °ü¸®ÀÚ¿¡¼­ adminÀ¸·Î º¯°æÇÏ¼¼¿ä
--- UPDATE Å×ÀÌºíÀÌ¸§ SET Ä®·³ = º¯°æ°ª WHERE Àý
+-- ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ adminï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½
+-- UPDATE ï¿½ï¿½ï¿½Ìºï¿½ï¿½Ì¸ï¿½ SET Ä®ï¿½ï¿½ = ï¿½ï¿½ï¿½æ°ª WHERE ï¿½ï¿½
 UPDATE board SET writer = 'admin'
 WHERE bno = 2;
 
--- 3¹ø °Ô½Ã±ÛÀ» »èÁ¦ÇÏ½Ã¿À
---DELETE FROM Å×ÀÌºíÀÌ¸§ WHERE Àý
+-- 3ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï½Ã¿ï¿½
+--DELETE FROM ï¿½ï¿½ï¿½Ìºï¿½ï¿½Ì¸ï¿½ WHERE ï¿½ï¿½
 DELETE FROM board
 WHERE bno = 3;
 
--- Àç±Í º¹»ç(ÀÚ·á »ðÀÔ)
--- INSERT INTO(Ä®·³) (SELECT Ä®·³ FROM Å×ÀÌºíÀÌ¸§)
+-- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½)
+-- INSERT INTO(Ä®ï¿½ï¿½) (SELECT Ä®ï¿½ï¿½ FROM ï¿½ï¿½ï¿½Ìºï¿½ï¿½Ì¸ï¿½)
 INSERT INTO board(bno, title, writer, content)
 (SELECT seq.nextval, title, writer, content FROM board);
 
 SELECT ROWNUM, bno, title, content
 FROM board
 WHERE ROWNUM >0 AND ROWNUM <= 10;
---WHERE ROWNUM >11 AND ROWNUM >= 20;  --RWONUMÀº 1À» Æ÷ÇÔÇØ¾ßÇÔ
+--WHERE ROWNUM >11 AND ROWNUM >= 20;  --RWONUMï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 
--- ÆäÀÌÁö Ã³¸®
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 SELECT *
 FROM
 (SELECT ROWNUM rn, bno, title, content
   FROM board)
-WHERE rn > 11 AND rn <= 20;  -- ROWNUMÀÇ º°ÄªÀ» »ç¿ëÇÏ¸é °¡´ÉÇÔ
+WHERE rn > 11 AND rn <= 20;  -- ROWNUMï¿½ï¿½ ï¿½ï¿½Äªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 -- ROWID
--- µ¥ÀÌÅÍ¸¦ ±¸ºÐÇÏ´Â À¯ÀÏÇÑ °ª
--- ROWID¸¦ ÅëÇØ¼­ µ¥ÀÌÅÍ ÆÄÀÏ, ¾î´À ºí·°¿¡ ÀúÀåµÇ¾î ÀÖ´ÂÁö ¾Ë ¼ö ÀÖÀ½
+-- ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+-- ROWIDï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 SELECT ROWID, bno, title, content
 FROM board
 WHERE ROWID = 'AAATF+AABAAAgUhAAG'; 
 
--- ½ÃÄö½º »èÁ¦
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 DROP SEQUENCE seq;
 
--- Å×ÀÌºí »èÁ¦
+-- ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
 DROP TABLE board;
+
+
+
